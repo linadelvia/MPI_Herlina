@@ -13,6 +13,24 @@
     <script type="text/javascript" src="./js/sacjs.js" charset="utf-8"></script>
 </head>
 <body>
+    <!-- Elemen audio -->
+    <audio id="myAudio" autoplay muted playsinline>
+        <source src="./book/-1727190000001.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
+    <script>
+        // Memutar audio setelah halaman dimuat
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('myAudio');
+
+            // Unmute setelah audio berhasil autoplay
+            audio.play().then(function() {
+                audio.muted = false; // Unmute audio setelah mulai diputar
+            }).catch(function(error) {
+                console.log('Autoplay dicegah: ' + error);
+            });
+        });
+    </script>
 </body>
 </html>
